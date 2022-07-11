@@ -3,13 +3,13 @@ import 'dart:io';
 abstract class AppEnv {
   AppEnv._();
 
-  static final secretKey = Platform.environment['SECRET_KEY'] ?? 'SECRET_KEY';
+  static final secretKey = _env('SECRET_KEY');
+  static final port = _env('PORT');
+  static final dbUsername = _env('DB_USERNAME');
+  static final dbPassword = _env('DB_PASSWORD');
+  static final dbHost = _env('DB_HOST');
+  static final dbPort = _env('DB_PORT');
+  static final dbName = _env('DB_NAME');
 
-  static final port = Platform.environment['PORT'] ?? '8080';
-
-  static final dbUsername = Platform.environment['DB_USERNAME'] ?? 'admin';
-  static final dbPassword = Platform.environment['DB_PASSWORD'] ?? 'root';
-  static final dbHost = Platform.environment['DB_HOST'] ?? '127.0.0.1';
-  static final dbPort = Platform.environment['DB_PORT'] ?? '6101';
-  static final dbName = Platform.environment['DB_NAME'] ?? 'postgres';
+  static String _env(String key) => Platform.environment[key] ?? '';
 }
